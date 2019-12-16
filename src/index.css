@@ -1,3 +1,7 @@
+@import "~normalize.css";
+@import "~@blueprintjs/core/lib/css/blueprint.css";
+@import "~@blueprintjs/icons/lib/css/blueprint-icons.css";
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +9,91 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #a8ff78;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #78ffd6, #a8ff78);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #78ffd6, #a8ff78); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.navbar {
+  width: 90% !important;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 5px;
+  background-color: rgb(20, 20, 20) !important;
+  color: white;
+}
+
+.navbar-content{
+  width: 95%;
+  margin: auto;
+}
+
+.navbar-input {
+  background-color: rgb(54, 54, 54) !important;
+}
+
+.card-component {
+  width: 300px;
+  margin:8px;
+  display: inline-block;
+  position: relative;
+  border-radius: 10px;
+}
+
+.card-component img {
+  object-fit: cover;
+  width:260px;
+  height:260px;
+  border-radius: 10px;
+  margin: 5px 0px;
+  transition: .5s ease;
+}
+
+.card-title {
+  word-break: keep-all;
+}
+
+.card-component img:hover{
+  opacity: 0.5;
+}
+
+.card-component Button {
+  margin: 2px auto
+}
+
+.container {
+  display: block;
+  position: relative;
+  width: 90%;
+  margin: 20px auto;
+}
+
+.character-details header{
+  width: 100% !important;
+  height: 50px;
+  background-color: gainsboro;
+  display: inline-flex;
+}
+
+.character-details-sidebar {
+  background-color: white;
+  z-index: 10;
+  position: fixed;
+}
+
+#react-paginate ul {
+  display: inline-block;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#react-paginate li {
+  display: inline-block;
 }

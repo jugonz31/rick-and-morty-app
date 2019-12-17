@@ -17,7 +17,6 @@ export default function AdvancedSearch() {
     return (
         <div className="search-container">
             <h1>Advanced Search</h1>
-            <hr width="70%" />
             <br/>
             <div className="search-filters">
                 <table className="search-filters-table">

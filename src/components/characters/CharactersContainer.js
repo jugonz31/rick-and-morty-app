@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CharacterCard from './CharacterCard';
 import axios from 'axios';
-
+import InfiniteScroll from 'react-infinite-scroll-component'
 import CharacterDetails from './CharacterDetails';
 import { UNSELECT_CHARACTER, SELECT_SAVED_CHARACTER, SELECT_NEW_CHARACTER } from '../../redux/actions/CharacterActions';
 
 export default function CharactersContainer() {
     const [characters, setCharacters] = useState([]);
-    const [activePage, setActivePage] = useState(1);
+    const [actualPage, setActualPage] = useState(1);
     const [detailsToggle, setDetailsToggle] = useState(false)
     const [reloader] = useState(0);
 
@@ -22,8 +22,9 @@ export default function CharactersContainer() {
     }, [reloader])
 
     const getCharacters = async () => {
-        const res = await axios.get("https://rickandmortyapi.com/api/character/?page=" + activePage);
-        return res.data.results;
+        const newPage = actualPage + 1
+        const res = await axios.get("https://rickandmortyapi.com/api/character/?page=" + newPage);
+        setCharacters([...characters, ...res.data.results])
     }
 
     const handleDetailsToggle = (id) => {
@@ -46,11 +47,7 @@ export default function CharactersContainer() {
             />
         )
     })
-    
-    const handlePageChange = (pageNumber) => {
-        console.log(`active page is ${pageNumber}`);
-        setActivePage(pageNumber);
-      }
+
 
     return (
         <div>
@@ -62,7 +59,17 @@ export default function CharactersContainer() {
                 />}
 
             <div className="card-container">
-                {charactersCards}
+
+                <InfiniteScroll
+                    dataLength={characters.length}
+                    next={getCharacters}
+                    hasMore={true}
+                    loader={<h4>Loading...</h4>}>
+                
+                    {charactersCards}
+
+                </InfiniteScroll>
+
             </div>
 
         </div>

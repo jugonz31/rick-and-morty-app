@@ -11,7 +11,7 @@ export default function Navigation() {
                 <div className="bp3-navbar-group bp3-align-right">
                     <button className="bp3-button bp3-minimal bp3-icon-home">Home</button>
                     <button className="bp3-button bp3-minimal bp3-icon-user">Characters</button>
-                    <button className="bp3-button bp3-minimal bp3-icon-globe">Locations</button>
+                    <button className="bp3-button bp3-minimal bp3-icon-search">Advanced Search</button>
                     <span className="bp3-navbar-divider"></span>
                     <input className="bp3-input navbar-input" placeholder="Search" type="text" />
                 </div>

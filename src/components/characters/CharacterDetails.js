@@ -1,13 +1,64 @@
 import React from 'react';
-import { Button } from "@blueprintjs/core";
+import { Drawer } from "@blueprintjs/core";
 
-export default function CharacterDetails() {
+export default function CharacterDetails(props) {
+  const character = props.character;
+  const location = character.location;
+  const origin = character.origin;
+
   return (
-    <div className="character-details">
-        <header>
-            <h3 className="bp3-heading">Title</h3>
-            <Button intent="danger">X</Button>
-        </header>
-    </div>
+    <Drawer
+      icon="info-sign"
+      onClose={props.handleDetailsToggle}
+      title={character.name}
+      autoFocus={true}
+      canEscapeKeyClose={true}
+      canOusideClickClose={true}
+      enforceFocus={true}
+      hasBackdrop={true}
+      isOpen={props.detailsToggle}
+      position="Position.RIGHT">
+
+      <div className="character-details-container">
+
+        <img src={character.image} alt={character.name} />
+
+        <table class="bp3-html-table">
+          <thead>
+            <tr>
+              <h3>Basic Information</h3>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Status</th>
+              <td>{character.status}</td>
+            </tr>
+            <tr>
+              <th>Gender</th>
+              <td>{character.gender}</td>
+            </tr>
+            <tr>
+              <th>Species</th>
+              <td>{character.species}</td>
+            </tr>
+            {(character.type !== "") && <tr>
+              <th>Type</th>
+              <td>{character.type}</td>
+            </tr>}
+            <tr>
+              <th>Location</th>
+              <td>{location.name}</td>
+            </tr>
+            <tr>
+              <th>Origin</th>
+              <td>{origin.name}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+    </Drawer>
   );
 }

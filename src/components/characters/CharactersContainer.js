@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import CharacterCard from './CharacterCard';
-import 'rc-pagination/assets/index.css';
-import Pagination from 'rc-pagination';
-import Sidebar from "react-sidebar";
-
-
 import axios from 'axios';
+
 import CharacterDetails from './CharacterDetails';
+import { UNSELECT_CHARACTER, SELECT_SAVED_CHARACTER, SELECT_NEW_CHARACTER } from '../../redux/actions/CharacterActions';
 
 export default function CharactersContainer() {
     const [characters, setCharacters] = useState([]);
-    const [actualPage, setPage] = useState(1);
+    const [activePage, setActivePage] = useState(1);
     const [detailsToggle, setDetailsToggle] = useState(false)
     const [reloader] = useState(0);
+
+    const selectedCharacter = useSelector(state => state.selectedCharacter);
+    const savedCharacters = useSelector(state => state.savedCharacters);
+    const dispatcher = useDispatch();
 
     useEffect(() => {
         axios.get('https://rickandmortyapi.com/api/character/')
@@ -20,14 +22,16 @@ export default function CharactersContainer() {
     }, [reloader])
 
     const getCharacters = async () => {
-        const res = await axios.get("https://rickandmortyapi.com/api/character/?page=" + actualPage);
+        const res = await axios.get("https://rickandmortyapi.com/api/character/?page=" + activePage);
         return res.data.results;
     }
-    const handlePageClick = (e) => {
-        console.log(e);
-    }
 
-    const handleDetailsToggle = () => {
+    const handleDetailsToggle = (id) => {
+        detailsToggle ?
+            dispatcher({ type: UNSELECT_CHARACTER }) :
+            savedCharacters.find(c => c.id === id) === undefined ?
+                dispatcher({ type: SELECT_NEW_CHARACTER, payload: { character: characters[(id - 1)] } }) :
+                dispatcher({ type: SELECT_SAVED_CHARACTER, payload: { id: id } });
         setDetailsToggle(!detailsToggle);
     }
 
@@ -37,28 +41,28 @@ export default function CharactersContainer() {
                 imgSrc={c.image}
                 id={c.id}
                 name={c.name}
-                onClick={handleDetailsToggle}
+                onClick={(id) => handleDetailsToggle(id)}
                 key={c.id}
             />
         )
     })
-
-
+    
+    const handlePageChange = (pageNumber) => {
+        console.log(`active page is ${pageNumber}`);
+        setActivePage(pageNumber);
+      }
 
     return (
         <div>
-            <Sidebar
-                sidebar={<CharacterDetails/>}
-                open={detailsToggle}
-                onSetOpen={handleDetailsToggle}
-                styles={{ sidebar: { background: "white", zIndex: 10, position:"fixed", width:"50%"} }}
-            >
-               
-            </Sidebar>
+            {detailsToggle &&
+                <CharacterDetails
+                    handleDetailsToggle={handleDetailsToggle}
+                    detailsToggle={detailsToggle}
+                    character={selectedCharacter}
+                />}
 
-            <div className="container">
+            <div className="card-container">
                 {charactersCards}
-                <Pagination className="pagination" defaultCurrent={1} onClick={handlePageClick} total={250} />
             </div>
 
         </div>

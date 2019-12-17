@@ -58,6 +58,8 @@ code {
 
 .card-title {
   word-break: keep-all;
+  height: 30px;
+  word-wrap: break-word;
 }
 
 .card-component img:hover{
@@ -68,24 +70,26 @@ code {
   margin: 2px auto
 }
 
-.container {
+.card-container {
   display: block;
   position: relative;
   width: 90%;
   margin: 20px auto;
+  text-align: center;
 }
 
-.character-details header{
-  width: 100% !important;
-  height: 50px;
-  background-color: gainsboro;
+.character-details-container{
   display: inline-flex;
 }
 
-.character-details-sidebar {
-  background-color: white;
-  z-index: 10;
-  position: fixed;
+.character-details-container img{
+  margin:15px;
+  width: 35%;
+}
+
+.character-details-container table{
+  margin:15px;
+  width: 65%;
 }
 
 #react-paginate ul {

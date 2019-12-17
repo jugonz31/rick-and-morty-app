@@ -8,7 +8,8 @@ import { UNSELECT_CHARACTER, SELECT_SAVED_CHARACTER, SELECT_NEW_CHARACTER } from
 
 export default function CharactersContainer() {
     const [characters, setCharacters] = useState([]);
-    const [actualPage, setActualPage] = useState(1);
+    const [actualPage, setActualPage] = useState("");
+    const [hasMore, setHasMore] = useState(true)
     const [detailsToggle, setDetailsToggle] = useState(false)
     const [reloader] = useState(0);
 
@@ -18,13 +19,21 @@ export default function CharactersContainer() {
 
     useEffect(() => {
         axios.get('https://rickandmortyapi.com/api/character/')
-            .then(res => setCharacters(res.data.results));
+            .then(res => {
+                setCharacters(res.data.results);
+                setActualPage(res.data.info.next)});
     }, [reloader])
 
     const getCharacters = async () => {
-        const newPage = actualPage + 1
-        const res = await axios.get("https://rickandmortyapi.com/api/character/?page=" + newPage);
-        setCharacters([...characters, ...res.data.results])
+        const newPage =  actualPage
+        const res = await axios.get(newPage);
+        if(res.data.results !== undefined){
+            setCharacters([...characters, ...res.data.results]);
+            setActualPage(res.data.info.next)
+        }else{
+            setHasMore(false);
+        }
+     
     }
 
     const handleDetailsToggle = (id) => {
@@ -63,7 +72,7 @@ export default function CharactersContainer() {
                 <InfiniteScroll
                     dataLength={characters.length}
                     next={getCharacters}
-                    hasMore={true}
+                    hasMore={hasMore}
                     loader={<h4>Loading...</h4>}>
                 
                     {charactersCards}

@@ -16,17 +16,16 @@ export default function CharacterDetails(props) {
       canOusideClickClose={true}
       enforceFocus={true}
       hasBackdrop={true}
-      isOpen={props.detailsToggle}
-      position="Position.RIGHT">
-
+      isOpen={props.detailsToggle}>
+        
       <div className="character-details-container">
 
         <img src={character.image} alt={character.name} />
 
-        <table class="bp3-html-table">
+        <table className="bp3-html-table">
           <thead>
             <tr>
-              <h3>Basic Information</h3>
+              <td><h3>Basic Information</h3></td>
             </tr>
           </thead>
           <tbody>

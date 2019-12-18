@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "967fe378c798d0eea23b2f7113f2195d",
+    "revision": "7ec500769ab4438592f9d5b3f4a49d2d",
     "url": "/rick-and-morty-app/index.html"
   },
   {
-    "revision": "9d3a0ae0cf061786ac6e",
+    "revision": "538c5f5f2aa46a9304bb",
     "url": "/rick-and-morty-app/static/css/2.2d1db0ca.chunk.css"
   },
   {
-    "revision": "adb7783883486d9dff00",
+    "revision": "77d556f11fefec24919f",
     "url": "/rick-and-morty-app/static/css/main.4f6614d8.chunk.css"
   },
   {
-    "revision": "9d3a0ae0cf061786ac6e",
-    "url": "/rick-and-morty-app/static/js/2.93e5ff31.chunk.js"
+    "revision": "538c5f5f2aa46a9304bb",
+    "url": "/rick-and-morty-app/static/js/2.9f253454.chunk.js"
   },
   {
     "revision": "981c245032ea4913502026cc015811df",
-    "url": "/rick-and-morty-app/static/js/2.93e5ff31.chunk.js.LICENSE"
+    "url": "/rick-and-morty-app/static/js/2.9f253454.chunk.js.LICENSE"
   },
   {
-    "revision": "adb7783883486d9dff00",
-    "url": "/rick-and-morty-app/static/js/main.45c98bd2.chunk.js"
+    "revision": "77d556f11fefec24919f",
+    "url": "/rick-and-morty-app/static/js/main.6cfe0a04.chunk.js"
   },
   {
     "revision": "d4c7210c46e4282b931f",

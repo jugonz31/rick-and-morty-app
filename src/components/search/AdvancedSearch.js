@@ -81,7 +81,7 @@ export default function AdvancedSearch() {
                 </form>
             </div >
             {searchToggle &&
-                <CharactersContainer query={queryString} />
+                <CharactersContainer query={queryString} search=""/>
             }
         </div>
     );

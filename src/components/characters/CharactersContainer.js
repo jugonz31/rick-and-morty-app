@@ -24,7 +24,7 @@ export default function CharactersContainer(props) {
             setNextPage(reqData.response.info.next);
         }
         initialRequest();
-    }, [])
+    }, [props.query])
 
     const getCharacters = async () => {
         const reqData = await request(nextPage);

@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "04569cdbe1fe23e98df65d16b5d75b88",
+    "revision": "967fe378c798d0eea23b2f7113f2195d",
     "url": "/rick-and-morty-app/index.html"
   },
   {
-    "revision": "663981420ff2ccfaa212",
-    "url": "/rick-and-morty-app/static/css/2.728506fe.chunk.css"
+    "revision": "9d3a0ae0cf061786ac6e",
+    "url": "/rick-and-morty-app/static/css/2.2d1db0ca.chunk.css"
   },
   {
-    "revision": "8deeb8e84adef049d37f",
-    "url": "/rick-and-morty-app/static/css/main.b612c712.chunk.css"
+    "revision": "adb7783883486d9dff00",
+    "url": "/rick-and-morty-app/static/css/main.4f6614d8.chunk.css"
   },
   {
-    "revision": "663981420ff2ccfaa212",
-    "url": "/rick-and-morty-app/static/js/2.af7990c6.chunk.js"
+    "revision": "9d3a0ae0cf061786ac6e",
+    "url": "/rick-and-morty-app/static/js/2.93e5ff31.chunk.js"
   },
   {
     "revision": "981c245032ea4913502026cc015811df",
-    "url": "/rick-and-morty-app/static/js/2.af7990c6.chunk.js.LICENSE"
+    "url": "/rick-and-morty-app/static/js/2.93e5ff31.chunk.js.LICENSE"
   },
   {
-    "revision": "8deeb8e84adef049d37f",
-    "url": "/rick-and-morty-app/static/js/main.b0c14e22.chunk.js"
+    "revision": "adb7783883486d9dff00",
+    "url": "/rick-and-morty-app/static/js/main.45c98bd2.chunk.js"
   },
   {
     "revision": "d4c7210c46e4282b931f",
@@ -54,5 +54,17 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "dc06f50fe90b0e03753bb60e36b935ce",
     "url": "/rick-and-morty-app/static/media/rick-and-morty-logo.dc06f50f.png"
+  },
+  {
+    "revision": "b90bffc4ba63b270b056f0f9aab9ccae",
+    "url": "/rick-and-morty-app/static/media/wallpaper1.b90bffc4.jpg"
+  },
+  {
+    "revision": "58351c5b9502bcc8b2267c46f1538690",
+    "url": "/rick-and-morty-app/static/media/wallpaper2.58351c5b.jpg"
+  },
+  {
+    "revision": "b7a3751c6e9164ae38be1a97093d58df",
+    "url": "/rick-and-morty-app/static/media/wallpaper3.b7a3751c.jpg"
   }
 ]);

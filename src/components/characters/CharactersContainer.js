@@ -45,17 +45,29 @@ export default function CharactersContainer(props) {
         setDetailsToggle(!detailsToggle);
     }
 
-    const charactersCards = characters.map((c) => {
-        return (
-            <CharacterCard
-                imgSrc={c.image}
-                id={c.id}
-                name={c.name}
-                onClick={(id) => handleDetailsToggle(id)}
-                key={c.id}
-            />
-        )
-    })
+    const charactersCards =
+        characters.map((c) => {
+            if (props.search !== "") {
+                if (c.name.toLowerCase().includes(props.search.toLowerCase())) {
+                    return (
+                        <CharacterCard
+                            imgSrc={c.image}
+                            id={c.id}
+                            name={c.name}
+                            onClick={(id) => handleDetailsToggle(id)}
+                            key={c.id}
+                        />)
+                } else return "";
+            } return (
+                <CharacterCard
+                    imgSrc={c.image}
+                    id={c.id}
+                    name={c.name}
+                    onClick={(id) => handleDetailsToggle(id)}
+                    key={c.id}
+                />
+            )
+        })
 
     return (
         <div>

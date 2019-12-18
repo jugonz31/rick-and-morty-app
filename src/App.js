@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Provider } from 'react-redux'
 import Navigation from './components/Navigation'
 import CharactersContainer from './components/characters/CharactersContainer';
@@ -8,23 +8,30 @@ import AdvancedSearch from './components/search/AdvancedSearch';
 import Home from './components/Home';
 
 function App() {
+  const [search, setSearch] = useState("");
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  }
+
   return (
     <Provider store={store}>
-        <Navigation />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/characters">
-            <CharactersContainer query=""/>
-          </Route>
-          <Route path="/advanced-search">
-            <AdvancedSearch />
-          </Route>
-        </Switch>
+      <Switch>
+        <Route exact path="/">
+          <Navigation search={false} />
+          <Home />
+        </Route>
+        <Route path="/characters">
+          <Navigation search={true} onChange={handleChange} />
+          <CharactersContainer query="" search={search} />
+        </Route>
+        <Route path="/advanced-search">
+          <Navigation search={false} />
+          <AdvancedSearch />
+        </Route>
+      </Switch>
     </Provider>
   );
 }
-
 
 export default App;

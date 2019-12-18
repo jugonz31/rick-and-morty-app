@@ -1,46 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CharacterCard from './CharacterCard';
-import axios from 'axios';
 import InfiniteScroll from 'react-infinite-scroll-component'
 import CharacterDetails from './CharacterDetails';
 import { UNSELECT_CHARACTER, SELECT_SAVED_CHARACTER, SELECT_NEW_CHARACTER } from '../../redux/actions/CharacterActions';
+import { request } from '../../js/api'
 
-export default function CharactersContainer() {
+export default function CharactersContainer(props) {
     const [characters, setCharacters] = useState([]);
-    const [actualPage, setActualPage] = useState("");
+    const [nextPage, setNextPage] = useState("");
     const [hasMore, setHasMore] = useState(true)
     const [detailsToggle, setDetailsToggle] = useState(false)
-    const [reloader] = useState(0);
 
     const selectedCharacter = useSelector(state => state.selectedCharacter);
     const savedCharacters = useSelector(state => state.savedCharacters);
     const dispatcher = useDispatch();
+    const api = "https://rickandmortyapi.com/api/character/"
 
     useEffect(() => {
-        axios.get('https://rickandmortyapi.com/api/character/')
-            .then(res => {
-                setCharacters(res.data.results);
-                setActualPage(res.data.info.next)});
-    }, [reloader])
+        const initialRequest = async () => {
+            const reqData = await request(api + props.query);
+            setCharacters(reqData.response.results);
+            setNextPage(reqData.response.info.next);
+        }
+        initialRequest();
+    }, [])
 
     const getCharacters = async () => {
-        const newPage =  actualPage
-        const res = await axios.get(newPage);
-        if(res.data.results !== undefined){
-            setCharacters([...characters, ...res.data.results]);
-            setActualPage(res.data.info.next)
-        }else{
+        const reqData = await request(nextPage);
+        if (reqData.response.results !== undefined) {
+            setCharacters([...characters, ...reqData.response.results]);
+            setNextPage(reqData.response.info.next)
+        } else {
             setHasMore(false);
         }
-     
     }
 
     const handleDetailsToggle = (id) => {
         detailsToggle ?
             dispatcher({ type: UNSELECT_CHARACTER }) :
             savedCharacters.find(c => c.id === id) === undefined ?
-                dispatcher({ type: SELECT_NEW_CHARACTER, payload: { character: characters[(id - 1)] } }) :
+                dispatcher({ type: SELECT_NEW_CHARACTER, payload: { character: characters.find(c => c.id === id) } }) :
                 dispatcher({ type: SELECT_SAVED_CHARACTER, payload: { id: id } });
         setDetailsToggle(!detailsToggle);
     }
@@ -57,7 +57,6 @@ export default function CharactersContainer() {
         )
     })
 
-
     return (
         <div>
             {detailsToggle &&
@@ -68,19 +67,14 @@ export default function CharactersContainer() {
                 />}
 
             <div className="card-container">
-
                 <InfiniteScroll
                     dataLength={characters.length}
                     next={getCharacters}
                     hasMore={hasMore}
                     loader={<h4>Loading...</h4>}>
-                
                     {charactersCards}
-
                 </InfiniteScroll>
-
             </div>
-
         </div>
     );
 }

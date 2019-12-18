@@ -21,7 +21,7 @@ export default function Home() {
                 <div data-src={wallpaper1} />
                 <div data-src={wallpaper2} />
                 <div data-src={wallpaper3} />
-        </AutoplaySlider>
+            </AutoplaySlider>
         </div>
     );
 }

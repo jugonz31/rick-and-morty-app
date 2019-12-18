@@ -132,14 +132,9 @@ code {
 }
 
 .home-container img{
-  margin: 10px auto;
+  margin: 30px auto;
 }
 
-.navbar-link{
-  color: white !important;
-}
-
-.navbar-active-link{
-  color: white !important;
-  font-weight: bold !important;
+.rick-and-morty-navbar .navbar-link {
+  color: white;
 }

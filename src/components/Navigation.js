@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 export default function Navigation() {
     return (
         <nav className="bp3-navbar bp3-dark navbar">
-            <div className="navbar-content">
+            <div className="navbar-content rick-and-morty-navbar">
                 <div className="bp3-navbar-group bp3-align-left">
                     <img src={logo} alt="Rick and Morty's logo" height="85%" />
                 </div>

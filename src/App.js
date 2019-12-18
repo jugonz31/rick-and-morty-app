@@ -16,7 +16,7 @@ function App() {
             <Home />
           </Route>
           <Route path="/characters">
-            <CharactersContainer />
+            <CharactersContainer query=""/>
           </Route>
           <Route path="/advanced-search">
             <AdvancedSearch />

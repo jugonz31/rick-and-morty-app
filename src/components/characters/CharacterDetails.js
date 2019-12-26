@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Drawer } from "@blueprintjs/core";
 
 export default function CharacterDetails(props) {
@@ -16,16 +16,17 @@ export default function CharacterDetails(props) {
       canOusideClickClose={true}
       enforceFocus={true}
       hasBackdrop={true}
-      isOpen={props.detailsToggle}>
-        
+      isOpen={props.detailsToggle}
+    >
       <div className="character-details-container">
-
         <img src={character.image} alt={character.name} />
 
         <table className="bp3-html-table">
           <thead>
             <tr>
-              <td><h3>Basic Information</h3></td>
+              <td>
+                <h3>Basic Information</h3>
+              </td>
             </tr>
           </thead>
           <tbody>
@@ -41,10 +42,12 @@ export default function CharacterDetails(props) {
               <th>Species</th>
               <td>{character.species}</td>
             </tr>
-            {(character.type !== "") && <tr>
-              <th>Type</th>
-              <td>{character.type}</td>
-            </tr>}
+            {character.type !== "" && (
+              <tr>
+                <th>Type</th>
+                <td>{character.type}</td>
+              </tr>
+            )}
             <tr>
               <th>Location</th>
               <td>{location.name}</td>
@@ -56,8 +59,6 @@ export default function CharacterDetails(props) {
           </tbody>
         </table>
       </div>
-
-
     </Drawer>
   );
 }

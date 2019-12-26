@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 # Rick and Morty app
 
 Proyecto realizado con el objetivo de reforzar las lecciones aprendidas con relacion a Redux, CSS y demás librerias utiles de React.

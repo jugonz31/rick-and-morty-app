@@ -90,15 +90,16 @@ code {
 
 .character-details-container img {
   margin: 15px;
-  width: 35%;
+  width: 40%;
+  object-fit: contain;
 }
 
 .character-details-container table {
   margin: 15px;
-  width: 65%;
 }
 
 .search-container {
+  position: relative;
   width: 80%;
   margin: 5px auto;
   padding: 20px;
@@ -115,6 +116,7 @@ code {
 }
 
 .search-filters {
+  position: absolute;
   width: 100%;
   background-color: rgb(240, 240, 240);
   margin: auto;
